@@ -1,3 +1,3 @@
 # Pong Game
 
-Pong game wrote in JavaScript
+Pong game written in JavaScript
