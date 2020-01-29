@@ -14,4 +14,12 @@ function draw() {
     circle(xCircle, yCircle, dCircle)
     xCircle += xSpeed
     yCircle += ySpeed
+
+    // Coditions to move circle 
+    if (xCircle > width || xCircle < 0) {
+        xSpeed *= -1
+    }
+    if (yCircle > height || yCircle < 0) {
+        ySpeed *= -1
+    }
 }
