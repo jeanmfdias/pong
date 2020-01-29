@@ -1,6 +1,7 @@
 let xCircle = 300
 let yCircle = 200
 let dCircle = 15
+let radius = dCircle / 2
 
 let xSpeed = 5
 let ySpeed = 5
@@ -16,10 +17,10 @@ function draw() {
     yCircle += ySpeed
 
     // Coditions to move circle 
-    if (xCircle > width || xCircle < 0) {
+    if (xCircle > width - radius || xCircle < radius) {
         xSpeed *= -1
     }
-    if (yCircle > height || yCircle < 0) {
+    if (yCircle > height - radius || yCircle < radius) {
         ySpeed *= -1
     }
 }
