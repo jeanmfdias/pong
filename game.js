@@ -11,6 +11,8 @@ let yRect = 150
 let hRect = 90
 let wRect = 10
 
+let collide = false
+
 function setup() {
     createCanvas(600, 400)
 }
@@ -58,10 +60,17 @@ function moveRect() {
     }
 }
 
+// function checkCollisionRect() {
+//     if (xCircle - radius < xRect + wRect &&
+//         yCircle - radius < yRect + hRect &&
+//         yCircle + radius > yRect) {
+//         xSpeed *= -1
+//     }
+// }
+
 function checkCollisionRect() {
-    if (xCircle - radius < xRect + wRect &&
-        yCircle - radius < yRect + hRect &&
-        yCircle + radius > yRect) {
+    collide = collideRectCircle(xRect, yRect, wRect, hRect, xCircle, yCircle, dCircle)
+    if (collide) {
         xSpeed *= -1
     }
 }
