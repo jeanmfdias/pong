@@ -6,6 +6,11 @@ let radius = dCircle / 2
 let xSpeed = 5
 let ySpeed = 5
 
+let xRect = 5
+let yRect = 150
+let hRect = 90
+let wRect = 10
+
 function setup() {
     createCanvas(600, 400)
 }
@@ -15,6 +20,9 @@ function draw() {
     showCircle()
     moveCircle()
     checkCollisionBorder()
+    showRect()
+    moveRect()
+    checkCollisionRect()
 }
 
 function showCircle() {
@@ -34,4 +42,22 @@ function checkCollisionBorder() {
     if (yCircle > height - radius || yCircle < radius) {
         ySpeed *= -1
     }
+}
+
+function showRect() {
+    rect(xRect, yRect, wRect, hRect)
+}
+
+function moveRect() {
+    if (keyIsDown(UP_ARROW) && yRect > 0) {
+        yRect -= 10
+    }
+
+    if (keyIsDown(DOWN_ARROW) && yRect + hRect < 400) {
+        yRect += 10
+    }
+}
+
+function checkCollisionRect() {
+
 }
