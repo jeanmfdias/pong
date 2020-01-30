@@ -59,5 +59,9 @@ function moveRect() {
 }
 
 function checkCollisionRect() {
-
+    if (xCircle - radius < xRect + wRect &&
+        yCircle - radius < yRect + hRect &&
+        yCircle + radius > yRect) {
+        xSpeed *= -1
+    }
 }
