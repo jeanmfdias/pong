@@ -12,10 +12,21 @@ function setup() {
 
 function draw() {
     background(0)
+    showCircle()
+    moveCircle()
+    checkCollisionBorder()
+}
+
+function showCircle() {
     circle(xCircle, yCircle, dCircle)
+}
+
+function moveCircle() {
     xCircle += xSpeed
     yCircle += ySpeed
+}
 
+function checkCollisionBorder() {
     // Coditions to move circle 
     if (xCircle > width - radius || xCircle < radius) {
         xSpeed *= -1
