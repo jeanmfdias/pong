@@ -17,6 +17,9 @@ let xOpponentRect = 585
 let yOpponentRect = 150
 let speedOpponent
 
+let myPoints = 0
+let opponentPoints = 0
+
 function setup() {
     createCanvas(600, 400)
 }
@@ -32,6 +35,8 @@ function draw() {
     checkCollisionRect(xRect, yRect)
     moveOpponentRect()
     checkCollisionRect(xOpponentRect, yOpponentRect)
+    addPoints()
+    sumPoints()
 }
 
 function showCircle() {
@@ -85,4 +90,19 @@ function checkCollisionRect(x, y) {
 function moveOpponentRect() {
     speedOpponent = yCircle - yOpponentRect - (wRect / 2) - 30
     yOpponentRect += speedOpponent
+}
+
+function addPoints() {
+    fill(255)
+    text(myPoints, 278, 26)
+    text(opponentPoints, 321, 26)
+}
+
+function sumPoints() {
+    if (xCircle + radius > 599) {
+        myPoints++
+    }
+    if (xCircle - radius < 1) {
+        opponentPoints++
+    }
 }
