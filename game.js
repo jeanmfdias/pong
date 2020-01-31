@@ -20,8 +20,19 @@ let speedOpponent
 let myPoints = 0
 let opponentPoints = 0
 
+let rected
+let point
+let soundtrack
+
+function preload() {
+    rected = loadSound("assets/raquetada.mp3")
+    point = loadSound("assets/ponto.mp3")
+    soundtrack = loadSound("assets/trilha.mp3")
+}
+
 function setup() {
     createCanvas(600, 400)
+    soundtrack.loop()
 }
 
 function draw() {
@@ -84,6 +95,7 @@ function checkCollisionRect(x, y) {
     collide = collideRectCircle(x, y, wRect, hRect, xCircle, yCircle, dCircle)
     if (collide) {
         xSpeed *= -1
+        rected.play()
     }
 }
 
@@ -93,16 +105,26 @@ function moveOpponentRect() {
 }
 
 function addPoints() {
+    stroke(255)
+    textAlign(CENTER)
+    textSize(16)
+    fill(color(255, 140, 0))
+    rect(130, 10, 40, 20)
     fill(255)
-    text(myPoints, 278, 26)
-    text(opponentPoints, 321, 26)
+    text(myPoints, 150, 26)
+    fill(color(255, 140, 0))
+    rect(430, 10, 40, 20)
+    fill(255)
+    text(opponentPoints, 450, 26)
 }
 
 function sumPoints() {
     if (xCircle + radius > 599) {
         myPoints++
+        point.play()
     }
     if (xCircle - radius < 1) {
         opponentPoints++
+        point.play()
     }
 }
