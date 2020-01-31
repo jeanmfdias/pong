@@ -13,6 +13,10 @@ let wRect = 10
 
 let collide = false
 
+let xOpponentRect = 585
+let yOpponentRect = 150
+let speedOpponent
+
 function setup() {
     createCanvas(600, 400)
 }
@@ -22,9 +26,12 @@ function draw() {
     showCircle()
     moveCircle()
     checkCollisionBorder()
-    showRect()
+    showRect(xRect, yRect)
+    showRect(xOpponentRect, yOpponentRect)
     moveRect()
-    checkCollisionRect()
+    checkCollisionRect(xRect, yRect)
+    moveOpponentRect()
+    checkCollisionRect(xOpponentRect, yOpponentRect)
 }
 
 function showCircle() {
@@ -46,8 +53,8 @@ function checkCollisionBorder() {
     }
 }
 
-function showRect() {
-    rect(xRect, yRect, wRect, hRect)
+function showRect(x, y) {
+    rect(x, y, wRect, hRect)
 }
 
 function moveRect() {
@@ -68,9 +75,14 @@ function moveRect() {
 //     }
 // }
 
-function checkCollisionRect() {
-    collide = collideRectCircle(xRect, yRect, wRect, hRect, xCircle, yCircle, dCircle)
+function checkCollisionRect(x, y) {
+    collide = collideRectCircle(x, y, wRect, hRect, xCircle, yCircle, dCircle)
     if (collide) {
         xSpeed *= -1
     }
+}
+
+function moveOpponentRect() {
+    speedOpponent = yCircle - yOpponentRect - (wRect / 2) - 30
+    yOpponentRect += speedOpponent
 }
