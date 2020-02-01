@@ -24,6 +24,8 @@ let rected
 let point
 let soundtrack
 
+let errorChance = 0
+
 function preload() {
     rected = loadSound("assets/raquetada.mp3")
     point = loadSound("assets/ponto.mp3")
@@ -100,8 +102,9 @@ function checkCollisionRect(x, y) {
 }
 
 function moveOpponentRect() {
-    speedOpponent = yCircle - yOpponentRect - (wRect / 2) - 30
-    yOpponentRect += speedOpponent
+    speedOpponent = yCircle - yOpponentRect - (wRect / 2)
+    yOpponentRect += speedOpponent - errorChance
+    calcErrorChance()
 }
 
 function addPoints() {
@@ -126,5 +129,19 @@ function sumPoints() {
     if (xCircle - radius < 1) {
         opponentPoints++
         point.play()
+    }
+}
+
+function calcErrorChance() {
+    if (opponentPoints >= myPoints) {
+        if (errorChance < 150) {
+            errorChance += 1
+        }
+    } else {
+        if (errorChance >= 30) {
+            errorChance -= 1
+        } else {
+            errorChance = 30
+        }
     }
 }
